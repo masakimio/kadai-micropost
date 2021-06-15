@@ -24,7 +24,7 @@ class MicropostsController extends Controller
         // Welcomeビューでそれらを表示
         return view('welcome', $data);
     }
-public function store(Request $request)
+    public function store(Request $request)
     {
         // バリデーション
         $request->validate([
@@ -39,6 +39,33 @@ public function store(Request $request)
         // 前のURLへリダイレクトさせる
         return back();
     }
+    public function edit($id)
+    {
+        // idの値でメッセージを検索して取得
+        $micropost = \App\Micropost::findOrFail($id);
+
+       // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を編集
+        if (\Auth::id() === $micropost->user_id) {
+            return view('microposts.edit', [
+            'micropost' => $micropost,
+        ]);
+        }
+    }
+    
+    public function update(Request $request, $id)
+    {
+        // バリデーション
+        $request->validate([
+            'content' => 'required|max:255',
+        ]);
+         $micropost = \App\Micropost::findOrFail($id);
+        // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
+        $micropost->content = $request->content;
+        $micropost->save();
+        // 前のURLへリダイレクトさせる
+        return redirect('/');
+    }
+    
     
     public function destroy($id)
     {
