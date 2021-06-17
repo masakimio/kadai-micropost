@@ -1,26 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="d-flex flex-row">
     <aside class="col-sm-4">
             {{-- ユーザ情報 --}}
         @include('users.card')
     </aside>
     
-    <div class="col-sm-6">
-        <h3>アカウント名変更</h3>
+    <div class="col-sm-7">
         {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
             <div class="form-group">
+                {!! Form::label('name', '名前') !!}
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
-
-                {!! Form::submit('変更', ['class' => 'btn btn-primary']) !!}
+            <div class="form-group">
+                {!! Form::label('introduction', '自己紹介') !!}
+                {!! Form::textarea('introduction', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="text-right">
+                {!! Form::button('変更', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
+            </div>
             {!! Form::close() !!}
-            
-        <h3>退会</h3>
-    {{-- メッセージ削除フォーム --}}
         {!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
-            {!! Form::submit('退会', ['class' => 'btn btn-danger']) !!}
+            <div class="text-right">
+                {!! Form::button('退会する', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
+            </div>
         {!! Form::close() !!}
     </div>
 </div>

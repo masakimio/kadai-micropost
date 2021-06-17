@@ -50,10 +50,16 @@ class UsersController extends Controller
     
     public function update(Request $request, $id)
     {
+        
+        $request->validate([
+                'name' => 'required|max:20',
+                'introduction' => 'max:255',
+         ]);
         // idの値でメッセージを検索して取得
         $user = User::findOrFail($id);
         // メッセージを更新
         $user->name = $request->name;
+        $user->introduction = $request->introduction;
         $user->save();
 
         // トップページへリダイレクトさせる
@@ -64,11 +70,17 @@ class UsersController extends Controller
     {
         // idの値でメッセージを検索して取得
         $user = User::findOrFail($id);
-        // メッセージを削除
         $user->delete();
-
-        // トップページへリダイレクトさせる
         return redirect('/');
+    }
+    
+    public function confirm($id)
+    {
+        $user = User::findOrFail($id);
+        
+        return view('users.confirm', [
+            'user' => $user,
+            ]);
     }
     
     public function followings($id)
@@ -130,4 +142,5 @@ class UsersController extends Controller
             'microposts' => $favorites,
         ]);
     }
+    
 }

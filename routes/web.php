@@ -28,17 +28,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
-        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');    // 追加
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+        Route::get('confirm', 'UsersController@confirm')->name('users.confirm');// 追加
     });
-
+    
     Route::resource('users', 'UsersController');
     
       // 追加
     Route::group(['prefix' => 'microposts/{id}'], function () {
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
+        Route::get('confirm', 'MicropostsController@confirm')->name('microposts.confirm');
     });
     
     Route::resource('microposts', 'MicropostsController');
+    
     
 });

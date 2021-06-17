@@ -78,7 +78,20 @@ class MicropostsController extends Controller
         }
 
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/');
+    }
+    
+    public function confirm($id)
+    {
+        // idの値でメッセージを検索して取得
+        $micropost = \App\Micropost::findOrFail($id);
+
+       // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を編集
+        if (\Auth::id() === $micropost->user_id) {
+            return view('microposts.confirm', [
+            'micropost' => $micropost,
+            ]);
+        }
     }
     
 }

@@ -1,7 +1,7 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color:#add8e6">
         {{-- トップページへのリンク --}}
-        <a class="navbar-brand" href="/">Microposts</a>
+        <a class="navbar-brand" href="/"><i class="fas fa-dove"></i>&nbsp;&nbsp;Microposts</a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>

@@ -14,25 +14,25 @@
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
-                    <div class="d-flex flex-row">
-                        <div>
+                    <div class="d-flex my-box-light">
+                        <div class="my-box mr-auto">
                             @include('favorite.favorite_button')
                         </div>
-                        <div>
+                        <div class="my-box">
                             @if (Auth::id() == $micropost->user_id)
                             {{-- 投稿編集ボタンのフォーム --}}
                             {!! Form::open(['route' => ['microposts.edit', $micropost->id], 'method' => 'get']) !!}
                                 {!! Form::button('<i class="fas fa-edit"></i>', ['class' => 'btn btn-secondary btn-sm', 'type' => 'submit']) !!}
                             {!! Form::close() !!}
-                        @endif
+                            @endif
                         </div>
-                        <div>
+                        <div class="my-box">
                             @if (Auth::id() == $micropost->user_id)
-                            {{-- 投稿削除ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                {!! Form::button('<i class="fas fa-trash-alt"></i>', ['class' => 'btn btn-danger btn-sm', 'type' => 'submit']) !!}
+                                {{-- 投稿削除ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['microposts.confirm', $micropost->id], 'method' => 'get']) !!}
+                                {!! Form::button('<i class="fas fa-trash-alt"></i>', ['class' => "btn btn-danger btn-sm", 'type' => 'submit']) !!}
                             {!! Form::close() !!}
-                        @endif
+                            @endif
                         </div>
                     </div>
                 </div>

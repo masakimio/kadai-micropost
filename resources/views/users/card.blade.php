@@ -5,6 +5,7 @@
     <div class="card-body">
         {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
         <img class="rounded img-fluid" src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
+        <a>{{ $user->introduction }}</a>
     </div>
 </div>
 {{-- フォロー／アンフォローボタン --}}
