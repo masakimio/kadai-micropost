@@ -9,7 +9,7 @@
             {!! Form::model($micropost, ['route' => ['microposts.update', $micropost->id], 'method' => 'put']) !!}
 
                 <div class="form-group">
-                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('content', null, ['class' => 'form-control', 'rows' => '5']) !!}
                 </div>
 
                 {!! Form::submit('編集', ['class' => 'btn btn-primary']) !!}

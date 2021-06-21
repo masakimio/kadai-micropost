@@ -70,10 +70,12 @@ class UsersController extends Controller
     {
         // idの値でメッセージを検索して取得
         $user = User::findOrFail($id);
-        $user->delete();
-        return redirect('/');
-    }
     
+            $user->delete();
+        return redirect('/');
+    
+    }
+   
     public function confirm($id)
     {
         $user = User::findOrFail($id);

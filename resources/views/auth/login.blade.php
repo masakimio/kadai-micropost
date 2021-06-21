@@ -11,12 +11,12 @@
             {!! Form::open(['route' => 'login.post']) !!}
                 <div class="form-group">
                     {!! Form::label('email', 'Email') !!}
-                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'メールアドレス']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('password', 'Password') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'パスワード']) !!}
                 </div>
 
                 {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}

@@ -11,22 +11,23 @@
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'ユーザ名']) !!}
+
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('email', 'Email') !!}
-                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'メールアドレス']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('password', 'Password') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => '8字以上']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('password_confirmation', 'Confirmation') !!}
-                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                    {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'もう一度パスワードを入力']) !!}
                 </div>
 
                 {!! Form::submit('Sign up', ['class' => 'btn btn-primary btn-block']) !!}
