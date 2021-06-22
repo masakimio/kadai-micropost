@@ -16,7 +16,7 @@
             </div>
             <div>
                 {!! Form::open(['route' => ['microposts.index', $micropost->id], 'method' => 'get']) !!}
-                    {!! Form::button('cancel', ['class' => "btn btn-outline-dark btn-sm", 'type' => 'submit']) !!}
+                    {!! Form::button('キャンセル', ['class' => "btn btn-outline-dark btn-sm", 'type' => 'submit']) !!}
                 {!! Form::close() !!}
             </div>
         </div>
