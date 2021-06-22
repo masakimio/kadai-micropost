@@ -9,13 +9,13 @@
             <div>
                 {!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                 <div class="text-right">
-                    {!! Form::button('退会', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
+                    {!! Form::button('退会する', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
             <div>
                 {!! Form::open(['route' => ['users.edit', $user->id], 'method' => 'get']) !!}
-                    {!! Form::button('cancel', ['class' => "btn btn-outline-info", 'type' => 'submit']) !!}
+                    {!! Form::button('キャンセル', ['class' => "btn btn-primary", 'type' => 'submit']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

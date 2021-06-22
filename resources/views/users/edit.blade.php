@@ -23,11 +23,7 @@
             </div>
         {!! Form::close() !!}
         </div>
-        <div class="d-flex my-box-light">
-            <div class="my-box mr-auto">
-                <h4>{{ $user->name }} を退会する</h4>
-            </div>
-            <div class="my-box">
+            <div class="text-right">
                {{-- 退会確認画面へのフォーム --}}
             {!! Form::open(['route' => ['users.confirm', $user->id], 'method' => 'get']) !!}
                  {!! Form::button('退会する', ['class' => "btn btn-danger btn-sm", 'type' => 'submit']) !!}
