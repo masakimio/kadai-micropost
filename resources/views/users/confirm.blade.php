@@ -8,9 +8,7 @@
         <div class="d-flex flex-row">
             <div>
                 {!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
-                <div class="text-right">
                     {!! Form::button('退会する', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
-                </div>
                 {!! Form::close() !!}
             </div>
             <div>

@@ -42,10 +42,11 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        
+        if (\Auth::id() === $user->id) {
         return view('users.edit', [
             'user' => $user,
             ]);
+        }
     }
     
     public function update(Request $request, $id)
@@ -55,9 +56,9 @@ class UsersController extends Controller
                 'name' => 'required|max:20',
                 'introduction' => 'max:255',
          ]);
-        // idの値でメッセージを検索して取得
+        // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
-        // メッセージを更新
+        // 更新
         $user->name = $request->name;
         $user->introduction = $request->introduction;
         $user->save();
@@ -68,7 +69,7 @@ class UsersController extends Controller
     
     public function destroy($id)
     {
-        // idの値でメッセージを検索して取得
+        // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
     
             $user->delete();
