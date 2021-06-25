@@ -43,7 +43,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         if (\Auth::id() === $user->id) {
-        return view('users.edit', [
+            return view('users.edit', [
             'user' => $user,
             ]);
         }
@@ -72,7 +72,7 @@ class UsersController extends Controller
         // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
     
-            $user->delete();
+        $user->delete();
         return redirect('/');
     
     }
